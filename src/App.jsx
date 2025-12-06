@@ -1,6 +1,7 @@
 import { ColourMessage } from './conpornents/ColourMessage';
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 export const App = () => {
+  console.log("--App--")
   const [num,setNum]=useState(0);
   const [textColor, setTextColor] = useState('black');
   const [isShowFace,showFace]=useState(true);
@@ -34,11 +35,16 @@ export const App = () => {
   const onClicktoggle = () => {
     showFace(!isShowFace);
   }
-  if (num % 3 === 0) {
-   isShowFace||showFace(true);
+
+  useEffect(() =>{
+    console.log("--useEffect--")
+    if (num % 3 === 0) {
+    isShowFace||showFace(true);
   } else {
     isShowFace&&showFace(false);
   }
+  },[num])
+  
 
   return (
   <>
